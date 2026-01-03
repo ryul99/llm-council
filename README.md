@@ -48,19 +48,19 @@ Edit `backend/config.py` (or set env vars) to customize the council:
 
 ```python
 COUNCIL_MODELS = [
-    "gpt-4o-mini",
-    "gpt-4o",
+    "gpt-5",
+    "gpt-5-mini",
 ]
 
-CHAIRMAN_MODEL = "gpt-4o"
+CHAIRMAN_MODEL = "gpt-5"
 ```
 
 You can also override via env vars:
 
 ```bash
-COUNCIL_MODELS=gpt-4o-mini,gpt-4o
-CHAIRMAN_MODEL=gpt-4o
-TITLE_MODEL=gpt-4o-mini
+COUNCIL_MODELS=gpt-5,gpt-5-mini
+CHAIRMAN_MODEL=gpt-5
+TITLE_MODEL=gpt-5-mini
 ```
 
 ## Running the Application
