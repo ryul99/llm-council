@@ -48,19 +48,24 @@ Edit `backend/config.py` (or set env vars) to customize the council:
 
 ```python
 COUNCIL_MODELS = [
-    "gpt-5",
-    "gpt-5-mini",
+    "openrouter/google/gemini-3-pro-preview",
+    "openrouter/openai/gpt-5.1",
+    "openrouter/anthropic/claude-sonnet-4.5",
+    "openrouter/x-ai/grok-4",
 ]
 
-CHAIRMAN_MODEL = "gpt-5"
+CHAIRMAN_MODEL = "openrouter/google/gemini-3-pro-preview"
+TITLE_MODEL = "openrouter/google/gemini-2.5-flash"
 ```
 
 You can also override via env vars:
 
 ```bash
-COUNCIL_MODELS=gpt-5,gpt-5-mini
-CHAIRMAN_MODEL=gpt-5
-TITLE_MODEL=gpt-5-mini
+COUNCIL_MODELS=openrouter/google/gemini-3-pro-preview,openrouter/openai/gpt-5.1
+# use first council model as chairman if not configured
+CHAIRMAN_MODEL=openrouter/google/gemini-3-pro-preview
+# use last council model as title model if not configured
+TITLE_MODEL=openrouter/google/gemini-2.5-flash
 ```
 
 ## Running the Application
