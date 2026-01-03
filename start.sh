@@ -16,6 +16,24 @@ sleep 2
 # Start frontend
 echo "Starting frontend on http://localhost:5173..."
 cd frontend
+if [ ! -x "node_modules/.bin/vite" ]; then
+  echo "Frontend dependencies not found (missing node_modules/.bin/vite). Installing locally..."
+  if [ -f "package-lock.json" ]; then
+    npm ci --include=dev || {
+      echo "npm ci --include=dev failed; retrying with npm ci..."
+      npm ci || { echo "Failed to install frontend dependencies via npm ci"; exit 1; }
+    }
+  else
+    npm install --include=dev || {
+      echo "npm install --include=dev failed; retrying with npm install..."
+      npm install || { echo "Failed to install frontend dependencies via npm install"; exit 1; }
+    }
+  fi
+  if [ ! -x "node_modules/.bin/vite" ]; then
+    echo "vite is still missing after install. If you have NODE_ENV=production set, unset it and retry."
+    exit 1
+  fi
+fi
 npm run dev &
 FRONTEND_PID=$!
 

@@ -59,6 +59,13 @@ CHAIRMAN_MODEL = "google/gemini-3-pro-preview"
 
 ## Running the Application
 
+First time (or after pulling updates):
+```bash
+cd frontend
+npm ci
+cd ..
+```
+
 **Option 1: Use the start script**
 ```bash
 ./start.sh
